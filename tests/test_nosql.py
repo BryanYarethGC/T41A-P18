@@ -29,6 +29,6 @@ def test_red_subordinados():
 def test_red_rutas():
   result = run_query("SELECT DISTINCT * FROM alcanzables_view;")
   print(f'resultado del query: {result}')
-  rutas={row[0] for row in result}
+  rutas={row[1] for row in result}
   assert len(rutas)==9
   
