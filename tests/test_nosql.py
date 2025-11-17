@@ -22,12 +22,12 @@ def test_tecnologia_array():
   assert "LAPTOP" in productos
 
 def test_red_subordinados():
-  result = run_query("SELECT * FROM red_subordinados;")
+  result = run_query("SELECT * FROM subordinados_view;")
   empleados={row[1] for row in result}
   assert len(empleados)==4
 
 def test_red_rutas():
-  result = run_query("SELECT DISTINCT * FROM alcanzables;")
+  result = run_query("SELECT DISTINCT * FROM alcanzables_view;")
   rutas={row[0] for row in result}
   assert len(rutas)==9
   
