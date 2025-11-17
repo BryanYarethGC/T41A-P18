@@ -1,5 +1,7 @@
 SELECT nombre from productos WHERE etiquetas@>ARRAY['TECNOLOGIA'];
 
+
+CREATE OR REPLACE VIEW subordinados_view AS
 WITH RECURSIVE red_subordinados AS (
   SELECT id,nombre,jefe_id from empleados where id=1
   UNION ALL
@@ -9,6 +11,7 @@ WITH RECURSIVE red_subordinados AS (
 )
 SELECT * FROM red_subordinados;
 
+CREATE OR REPLACE VIEW alcanzables_view AS
 WITH RECURSIVE alcanzables AS (
     SELECT
         ciudad_origen AS origen_inicial,
@@ -32,6 +35,4 @@ WITH RECURSIVE alcanzables AS (
     WHERE
         r_new_dest.ciudad <> ALL(a.camino) 
 )
-SELECT DISTINCT *
-FROM alcanzables
-ORDER BY destino;
+SELECT * FROM alcanzables
