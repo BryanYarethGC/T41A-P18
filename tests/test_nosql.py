@@ -17,17 +17,17 @@ def run_query(query):
 
 def test_tecnologia_array():
   result = run_query("SELECT nombre from productos WHERE etiquetas@>ARRAY['TECNOLOGIA'];")
-  productos={row[0] for row in result)
+  productos={row[0] for row in result}
   assert "SMARTPHONE" in productos
   assert "LAPTOP" in productos
 
 def test_red_subordinados():
   result = run_query("SELECT * FROM red_subordinados;")
-  empleados={row[1] for row in result)
+  empleados={row[1] for row in result}
   assert len(empleados)==4
 
 def test_red_rutas():
   result = run_query("SELECT DISTINCT * FROM alcanzables;")
-  rutas={row[0] for row in result)
+  rutas={row[0] for row in result}
   assert len(rutas)==9
   
